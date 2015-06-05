@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="minesweeper">
+<head>
+	<meta charset="UTF-8">
+	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.4-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="ui-bootstrap-tpls-0.13.0.min.js">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Minesweeper</title>
+</head>
+<body ng-controller="gameCtrl">
+	<div class="background">
+		<div class="gameContainer">
+			<h1>Retro Minesweeper</h1>
+			<table>
+				<tr ng-repeat="row in gameBoard.rows">
+					<td ng-repeat="spot in row.spots" ng-click="spot.notClicked=false; spot.isFlag=false" ng-right-click="spot.isFlag=true">
+						<img ng-if="spot.notClicked && !spot.isFlag" src="imgs/unClicked.png">
+						<img ng-if="spot.notClicked && spot.isFlag" src="imgs/flag.png">
+						<img ng-if="!spot.notClicked && spot.content === 'empty'" src="imgs/Clicked.png">
+						<img ng-if="!spot.notClicked && spot.content === 'mine'" src="imgs/mine.png">
+						<img ng-if="!spot.notClicked && spot.content === 1" src="imgs/1.png">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script src="angular.min.js"></script>
+	<script src="jquery-2.1.3.min.js"></script>
+	<script src="app.js"></script>
+	<script src="controllers/mainCtrl.js"></script>
+	<script src="services/mainService.js"></script>
+	<script src="directives/rcDirective.js"></script>
+</body>
+</html>
