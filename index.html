@@ -5,31 +5,32 @@
 	<!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/ui-bootstrap-tpls-0.13.0.min.js">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Minesweeper</title>
 </head>
-<body ng-controller="gameCtrl">
-	<div class="background">
-		<div class="gameContainer">
-			<h1>Retro Minesweeper</h1>
-			<table>
-				<tr ng-repeat="row in gameBoard.rows">
-					<td ng-repeat="spot in row.spots" ng-click="spot.notClicked=false; spot.isFlag=false" ng-right-click="spot.isFlag=true">
-						<img ng-if="spot.notClicked && !spot.isFlag" src="imgs/unClicked.png">
-						<img ng-if="spot.notClicked && spot.isFlag" src="imgs/flag.png">
-						<img ng-if="!spot.notClicked && spot.content === 'empty'" src="imgs/Clicked.png">
-						<img ng-if="!spot.notClicked && spot.content === 'mine'" src="imgs/mine.png">
-						<img ng-if="!spot.notClicked && spot.content === 1" src="imgs/1.png">
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
+<body>
+	<form class="text-center choices" ng-controller="mainCtrl">
+		<h3>Choose Your Difficulty</h3>
+		<button ng-click="createEasyGame()">Easy</button>
+		<button ng-click="createNormalGame()">Normal</button>
+		<button ng-click="createHardGame()">Hard</button>
+	</form>
+
+	<ng-view></ng-view>
+	
 	<script src="library/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-route.min.js"></script>
 	<script src="library/jquery-2.1.3.min.js"></script>
 	<script src="app.js"></script>
 	<script src="controllers/mainCtrl.js"></script>
+	<script src="controllers/easyCtrl.js"></script>
+	<script src="controllers/normalCtrl.js"></script>
+	<script src="controllers/hardCtrl.js"></script>
 	<script src="services/mainService.js"></script>
+	<script src="services/easyService.js"></script>
+	<script src="services/normalService.js"></script>
+	<script src="services/hardService.js"></script>
 	<script src="directives/rcDirective.js"></script>
+	<script src="directives/modalDirective.js"></script>
 </body>
 </html>

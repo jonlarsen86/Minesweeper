@@ -1,0 +1,39 @@
+<div class="game-container" ng-controller="easyCtrl">
+	<div class="game">
+		<table class="center" ng-mousedown="showSmileOpen()" ng-mouseup="hideSmileOpen()">
+			<tr class="table-header-footer">
+				<td colspan="999">
+					<div class="top">
+						<img class="smiley" ng-if="!lostMessage && !smileOpen" ng-src="imgs/smile.png"/>
+						<img class="smiley" ng-if="lostMessage && !smileOpen" ng-src="imgs/smilexeyes.png"/>
+						<img class="smiley"  ng-if="smileOpen" ng-src="imgs/smileopen.png"/>
+					</div>
+				</td>
+			</tr>
+			<tr ng-repeat="row in gameBoard.rows" ng-click="assignRow(row)">
+				<td ng-repeat="spot in row.spots" ng-click="uncoverSpot(spot)" ng-right-click="flag(spot)">
+					<img ng-if="!spot.isClicked && !spot.isFlag" src="imgs/unClicked.png">
+					<img ng-if="!spot.isClicked && spot.isFlag" src="imgs/flag.png">
+					<img ng-if="spot.isClicked && spot.content === 'empty'" src="imgs/Clicked.png">
+					<img ng-if="spot.isClicked && spot.content === 'mine'" src="imgs/mine.png">
+					<img ng-if="spot.isClicked && spot.content === 'redMine'" src="imgs/redMine.png">
+					<img ng-if="spot.isClicked && spot.content === 1" src="imgs/1.png">
+					<img ng-if="spot.isClicked && spot.content === 2" src="imgs/2.png">
+					<img ng-if="spot.isClicked && spot.content === 3" src="imgs/3.png">
+					<img ng-if="spot.isClicked && spot.content === 4" src="imgs/4.png">
+					<img ng-if="spot.isClicked && spot.content === 5" src="imgs/5.png">
+					<img ng-if="spot.isClicked && spot.content === 6" src="imgs/6.png">
+					<img ng-if="spot.isClicked && spot.content === 7" src="imgs/7.png">
+					<img ng-if="spot.isClicked && spot.content === 8" src="imgs/8.png">
+				</td>
+			</tr>
+		</table>
+		<modal-dialog class="center" show='modalShown' width='300px' height='25%'>
+			<h3 ng-if="wonMessage || lostMessage">You {{text}}</h3>
+			<h3>Your score: {{}}</h3>
+			<span>Play again?</span>
+			<button class="btn btn-default right-side-btn" ng-click='resetGame()'>Yes</button>
+			<button class="btn btn-default right-side-btn" show='!modalShown'>No</button>
+		</modal-dialog>
+	</div>
+</div>
