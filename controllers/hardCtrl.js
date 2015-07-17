@@ -1,5 +1,5 @@
 "use strict";
-app.controller("hardCtrl", function($scope, $timeout, hardService) {
+app.controller("hardCtrl", function($scope, $timeout, $location, hardService) {
 
 	$scope.gameBoard = hardService.createGameBoard();
 	$scope.modalShown = false;
@@ -69,6 +69,10 @@ app.controller("hardCtrl", function($scope, $timeout, hardService) {
 			return;
 		}
 		$scope.smileOpen = false;
+	}
+
+	$scope.returnToHomePage = function() {
+		$location.path("/");
 	}
 
 
