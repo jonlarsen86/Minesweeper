@@ -200,7 +200,9 @@ app.service("easyService", function() {
 		    }.bind(this))
 		}
 
-
+		this.timer = function() {
+			
+		}
 
     	return minefield;
 	}
