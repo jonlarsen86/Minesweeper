@@ -54,7 +54,11 @@ app.controller("hardCtrl", function($scope, $timeout, $location, hardService) {
 	};
 
 	$scope.resetGame = function() {
-		hardService.createGameBoard();
+		$scope.gameBoard = hardService.createGameBoard();
+		$scope.modalShown = false;
+		$scope.wonMessage = false;
+		$scope.lostMessage = false;
+		$scope.smileOpen = false;
 	}
 
 	$scope.showSmileOpen = function() {

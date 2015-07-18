@@ -1,5 +1,5 @@
 "use strict";
-app.service("easyService", function() {
+app.service("easyService", function($timeout) {
 
 	//create the game board
 	this.createGameBoard = function() {
@@ -56,6 +56,7 @@ app.service("easyService", function() {
 		randomizeMines(minefield, getSpot);
 
 		//calculate the number of mines touching that spot
+		//to do: rewrite me!
 		var calculateNumber = function(minefield, row, column) {
 			var thisSpot = getSpot(minefield, row, column);
 
@@ -200,9 +201,13 @@ app.service("easyService", function() {
 		    }.bind(this))
 		}
 
-		this.timer = function() {
-			
-		}
+		// this.timer = function() {
+  // 			var seconds = 0;
+  // 			setInterval(function() {
+  //   			seconds++;
+  //   		}, 1000);
+  //   		return seconds;
+		// }
 
     	return minefield;
 	}

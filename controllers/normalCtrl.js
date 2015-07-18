@@ -54,7 +54,11 @@ app.controller("normalCtrl", function($scope, $timeout, $location, normalService
 	};
 
 	$scope.resetGame = function() {
-		normalService.createGameBoard();
+		$scope.gameBoard = normalService.createGameBoard();
+		$scope.modalShown = false;
+		$scope.wonMessage = false;
+		$scope.lostMessage = false;
+		$scope.smileOpen = false;
 	}
 
 	$scope.showSmileOpen = function() {

@@ -54,7 +54,11 @@ app.controller("easyCtrl", function($scope, $timeout, $location, easyService) {
 	};
 
 	$scope.resetGame = function() {
-		easyService.createGameBoard();
+		$scope.gameBoard = easyService.createGameBoard();
+		$scope.modalShown = false;
+		$scope.wonMessage = false;
+		$scope.lostMessage = false;
+		$scope.smileOpen = false;
 	}
 
 	$scope.showSmileOpen = function() {
@@ -74,5 +78,9 @@ app.controller("easyCtrl", function($scope, $timeout, $location, easyService) {
 	$scope.returnToHomePage = function() {
 		$location.path("/");
 	}
+
+	// $scope.timer = function() {
+	// 	$scope.seconds = easyService.timer();
+	// }
 
 });
